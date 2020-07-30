@@ -9,16 +9,19 @@ g = xlsread('PARAMS.xlsx','PARAMETERS','B7');       %GAMMA
 R = xlsread('PARAMS.xlsx','PARAMETERS','B8');       %GAS CONSTANT    
 
 %% exit pressure
-if (11000>ALT) && (ALT<25000)
-    T = -56.46; %C
-    p_o = 1000*(22.65*exp(1.73-0.000157*ALT));
-elseif ALT>=25000
-    T = -131.21 + 0.00299*ALT ;
-    p_o = 1000*(2.488*((T+273.1)/216.6)^-11.388);
-else 
-    T = 15.04 - 0.00649*ALT;
-    p_o = 1000*(101.29*((T+273.1)/288.08)^5.256);
-end
+% if (11000>ALT) && (ALT<25000)
+%    T = -56.46; %C
+%    p_o = 1000*(22.65*exp(1.73-0.000157*ALT));
+%elseif ALT>=25000
+%    T = -131.21 + 0.00299*ALT ;
+%    p_o = 1000*(2.488*((T+273.1)/216.6)^-11.388);
+%else 
+%    T = 15.04 - 0.00649*ALT;
+%    p_o = 1000*(101.29*((T+273.1)/288.08)^5.256);
+%end
+
+T = 15;
+p_o = 90000;
 
 %%  begin calculation
 PR = p_o/p_1;
@@ -120,7 +123,7 @@ b(1) = TR;
     end
     hold on
     
-    LAST POINT
+    %% LAST POINT
     xf = (b(length(b))+SL(length(SL))*P(length(P)))/SL(length(SL));
     yf = b(length(b));
     X_F = [P(length(P)) xf];
